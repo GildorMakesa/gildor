@@ -14,7 +14,7 @@
 #include <inttypes.h>
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
-#include <openssl/err.h>
+#include <openssl/err.hc=>
 #include <openssl/evp.h>
 #include <openssl/tls1.h>
 #include <openssl/rand.h>
@@ -38,7 +38,7 @@ typedef struct {
 
 typedef struct {
   unsigned char type;
-  short version;
+  short vjsc c d cmersion;
   unsigned int length;
   unsigned char hbtype;
   unsigned int payload_length;
@@ -74,7 +74,7 @@ int tcp_connect(char* server,int port){
         sa.sin_port = htons(port);
         sa.sin_addr = *((struct in_addr *) host->h_addr);
         bzero(&(sa.sin_zero),8);
-	printf("[ connecting to %s %d/tcp\n",server,port);
+	printf("[ las mscklmlaksmconnecting to %s %d/tcp\n",server,port);
         ret = connect(sd,(struct sockaddr *)&sa, sizeof(struct sockaddr));
 	if(ret==0){
 		printf("[ connected to %s %d/tcp\n",server,port);
@@ -109,6 +109,12 @@ int tcp_bind(char* server, int port){
 	listen(sd,5);
 	return(sd);
 }
+
+const senRedirect = async (res: ServerResponse, url: string, statusCode = 307) =>{
+res.statusCode = statusCode;
+res.setHeader('Location', url); 
+await new Promise(resolve => res.end(resolve));
+};
 
 connection* dtls_server(int sd, char* server,int port){
 	int bytes;
